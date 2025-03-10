@@ -92,13 +92,13 @@ function createPost() {
   })
     .then((response) => response.json())
     .then((data) => {
-      console.log("Respuesta del servidor:", data); // Para depuración
+      console.log("Respuesta del servidor:", data); 
 
-      if (data.success) {
+      if (data) {
         alert(data.message);
-        showScreen("post-div"); // Luego redirige
+        showScreen("home"); 
       } else {
-        alert(data.message); // Si falla el login, muestra error
+        alert(data.message);
       }
     })
     .catch((error) => console.error("Error:", error));
