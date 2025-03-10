@@ -1,20 +1,18 @@
-document
-  .getElementById("registerBtn")
-  .addEventListener("click", registroUsuarios);
-document.getElementById("login-btn").addEventListener("click", loginUsuarios);
+document.getElementById("registerBtn").addEventListener("click", registroUsuarios);
+document.getElementById("loginBtn").addEventListener("click", loginUsuarios);
 
-const secciones = ["home", "register-div", "login-div", "post-div"];
+// Code for none and block display
+const sections = ["home", "register-div", "login-div", "post-div"];
 
 function showScreen(idScreen) {
-  secciones.forEach((id) => {
+  sections.forEach((id) => {
     document.getElementById(id).style.display =
       id === idScreen ? "block" : "none";
   });
 }
 
-// Se ejecuta cuando la página carga
 document.addEventListener("DOMContentLoaded", function () {
-  showScreen("home"); // Mostrar home por defecto
+  showScreen("home");
 
   document
     .getElementById("register-btn")
@@ -69,7 +67,7 @@ function loginUsuarios() {
       console.log("Respuesta del servidor:", data); // Para depuración
 
       if (data.success) {
-        alert(data.message); // Primero muestra el alert
+        alert(data.message);
         showScreen("post-div"); // Luego redirige
       } else {
         alert(data.message); // Si falla el login, muestra error
