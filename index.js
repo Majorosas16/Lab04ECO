@@ -8,6 +8,7 @@ app.use("/app1", express.static(path.join(__dirname, "app1")));
 app.use("/app2", express.static(path.join(__dirname, "app2")));
 
 let users = [];
+let post = [];
 
 app.get("/users", (req, res) => {
   res.json(users);
@@ -20,7 +21,6 @@ app.post("/user-register", (req, res) => {
   if (!user || !name || !password) {
     return res.status(400).json({ message: "Ops, faltan datos" });
   }
-
 
   const newUser = { user, name, password };
   console.log("Super el registro:", newUser);
@@ -44,6 +44,24 @@ app.post("/user-login", (req, res) => {
 
   console.log("Inicio de sesión exitoso:", foundUser);
   res.json({ message: "Inicio de sesión exitoso", success: true });
+});
+
+app.get("/post", (req, res) => {
+  res.json(post);
+});
+
+app.post("/create-post", (req, res) => {
+  const { url, title, bio } = req.body;
+
+  if (!url || !title || !bio) {
+    return res.status(400).json({ message: "Ops, faltan datos",});
+  }
+
+  const newPost = { url, title, bio };
+  console.log("Super el registro:", newPost);
+
+  post.push(newPost);
+  res.json({ message: "Post registrado" });
 });
 
 app.listen(5020);

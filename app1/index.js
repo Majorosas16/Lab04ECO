@@ -1,5 +1,13 @@
-document.getElementById("registerBtn").addEventListener("click", registroUsuarios);
-document.getElementById("loginBtn").addEventListener("click", loginUsuarios);
+document.getElementById("registerBtn").addEventListener("click", userRegister);
+document.getElementById("loginBtn").addEventListener("click", userLogin);
+document.getElementById("create").addEventListener("click", createPost);
+
+const userInput = document.getElementById("user-input");
+const nameInput = document.getElementById("name-input");
+const passwordInput = document.getElementById("password-input");
+const urlImage = document.getElementById("url-image");
+const titleImage = document.getElementById("title-input");
+const bio = document.getElementById("bio-input");
 
 // Code for none and block display
 const sections = ["home", "register-div", "login-div", "post-div"];
@@ -31,11 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
     .addEventListener("click", () => showScreen("home"));
 });
 
-const userInput = document.getElementById("user-input");
-const nameInput = document.getElementById("name-input");
-const passwordInput = document.getElementById("password-input");
-
-function registroUsuarios() {
+function userRegister() {
   fetch("http://localhost:5020/user-register", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -53,13 +57,37 @@ function registroUsuarios() {
     .catch((error) => console.error("Error:", error));
 }
 
-function loginUsuarios() {
+function userLogin() {
   fetch("http://localhost:5020/user-login", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       user: userInput.value,
       password: passwordInput.value,
+    }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Respuesta del servidor:", data); // Para depuración
+
+      if (data.success) {
+        alert(data.message);
+        showScreen("post-div"); // Luego redirige
+      } else {
+        alert(data.message); // Si falla el login, muestra error
+      }
+    })
+    .catch((error) => console.error("Error:", error));
+}
+
+function createPost() {
+  fetch("http://localhost:5020/create-post", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      url: urlImage.value,
+      title: titleImage.value,
+      bio: bio.value
     }),
   })
     .then((response) => response.json())
