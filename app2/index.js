@@ -29,6 +29,9 @@ const renderUsers = (data) => {
   data.forEach((user) => {
       const cardUser = document.createElement("div");
       cardUser.innerHTML = `
+      <div>
+      <img src="${user.avatar}" alt="${user.name}">
+      </div>
         <h3>${user.user}</h3>
         <p>${user.name}</p>
       `;

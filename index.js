@@ -14,15 +14,19 @@ app.get("/users", (req, res) => {
   res.json(users);
 });
 
+app.get("/post", (req, res) => {
+  res.json(post);
+});
+
 app.post("/user-register", (req, res) => {
 
-  const { user, name, password } = req.body;
+  const { avatar, user, name, password } = req.body;
 
   if (!user || !name || !password) {
     return res.status(400).json({ message: "Ops, faltan datos" });
   }
 
-  const newUser = { user, name, password };
+  const newUser = { avatar, user, name, password };
   console.log("Super el registro:", newUser);
 
   users.push(newUser);
@@ -46,14 +50,10 @@ app.post("/user-login", (req, res) => {
   res.json({ message: "Inicio de sesión exitoso", success: true });
 });
 
-app.get("/post", (req, res) => {
-  res.json(post);
-});
-
 app.post("/create-post", (req, res) => {
   const { url, title, bio } = req.body;
 
-  if (!url || !title || !bio) {
+  if (!title || !bio) {
     return res.status(400).json({ message: "Ops, faltan datos",});
   }
 

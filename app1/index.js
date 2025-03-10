@@ -2,6 +2,7 @@ document.getElementById("registerBtn").addEventListener("click", userRegister);
 document.getElementById("loginBtn").addEventListener("click", userLogin);
 document.getElementById("create").addEventListener("click", createPost);
 
+const avatarInput = document.getElementById("avatar-image");
 const userInput = document.getElementById("user-input");
 const nameInput = document.getElementById("name-input");
 const passwordInput = document.getElementById("password-input");
@@ -44,6 +45,7 @@ function userRegister() {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
+      avatar: avatarInput.value,
       user: userInput.value,
       name: nameInput.value,
       password: passwordInput.value,
@@ -96,7 +98,6 @@ function createPost() {
 
       if (data) {
         alert(data.message);
-        showScreen("home"); 
       } else {
         alert(data.message);
       }

@@ -1,0 +1,82 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100vh;
+    margin: 0;
+    padding-top: 80px; /* Espacio para los botones fijos */
+}
+
+h1 {
+    color: #333;
+}
+
+/* Botones fijos en la parte superior */
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 200px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    position: fixed;
+    top: 10px;
+}
+
+#usersList-btn {
+    left: 20px;
+}
+
+#postList-btn {
+    right: 20px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Contenedores de listas con desplazamiento */
+#usersList, #postList {
+    width: 90%;
+    max-width: 600px;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    text-align: center;
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+/* Tarjetas de usuario y post */
+#usersList div, #postList div {
+    background: #fff;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+#usersList img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+#postList img {
+    width: 100%;
+    height: 200px;
+    border-radius: 8px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
