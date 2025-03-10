@@ -14,11 +14,14 @@ app.get("/users", (req, res) => {
 });
 
 app.post("/user-register", (req, res) => {
+
   const { user, name, password } = req.body;
 
   if (!user || !name || !password) {
     return res.status(400).json({ message: "Ops, faltan datos" });
   }
+
+
   const newUser = { user, name, password };
   console.log("Super el registro:", newUser);
 
@@ -26,26 +29,21 @@ app.post("/user-register", (req, res) => {
   res.json({ message: "Usuario registrado" });
 });
 
+app.post("/user-login", (req, res) => {
+  const { user, password } = req.body;
+
+  if (!user || !password) {
+    return res.status(400).json({ message: "Ops, faltan datos", success: false });
+  }
+
+  const foundUser = users.find(u => u.user === user && u.password === password);
+
+  if (!foundUser) {
+    return res.status(401).json({ message: "Usuario no existe o contraseña incorrecta", success: false });
+  }
+
+  console.log("Inicio de sesión exitoso:", foundUser);
+  res.json({ message: "Inicio de sesión exitoso", success: true });
+});
+
 app.listen(5020);
-
-// // POST: Registro de por medio del input
-// app.post("/register", (req, res) => {
-//   const { name } = req.body;
-//   if (!name) { //Verifica que antes de darle al btn registrar haya un nombre
-//     return res.status(400).json({ message: "Ops, el nombre es obligatorio" });
-//   }
-// //objects.keys() devuelve un array de keys en las propiedades de "players  "
-//   if (Object.keys(players).length >= 2) {
-//     return res.status(400).json({ message: "Ops, solo 2 jugadores" });
-//   }
-
-//   players[name] = null; //Este jugador se ha registrado, pero aún no sabemos qué jugada ha elegido
-//   console.log("Jugadores registrados:", players);
-
-//   res.json({ message: `¡Jugador ${name} registrado!`, players: Object.keys(players) });
-
-//   // Cuando hay 2 jugadores, comienza el temporizador o la function startCountdown()
-//   if (Object.keys(players).length === 2) {
-//     countdown();
-//   }
-// });

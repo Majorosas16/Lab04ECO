@@ -9,9 +9,11 @@
 </head>
 
 <body>
-    <h1>Home Ecogram</h1>
-    <button id="register-btn">Registro</button>
-    <button id="login-btn">Login</button>
+    <div id="home">
+        <h1>Home Ecogram</h1>
+        <button id="register-btn">Registro</button>
+        <button id="login-btn">Login</button>
+    </div>
 
     <div id="register-div">
         <h2>Registrar usuario</h2>
@@ -19,7 +21,7 @@
             <input type="text" id="name-input" placeholder="name">
             <input type="password" id="password-input" placeholder="password">
             <button id="registerBtn">Registrar</button>
-            <p>Volver a pantalla principal</p>
+            <p class="backHome1">Volver a pantalla principal</p>
     </div>
 
     <div id="login-div">
@@ -27,7 +29,7 @@
             <input type="text" placeholder="user">
             <input type="password" placeholder="password">
             <button type="submit">Login</button>
-            <p>Volver a pantalla principal</p>
+            <p class="backHome2">Volver a pantalla principal</p>
     </div>
 
     <div id="post-div">
@@ -36,6 +38,7 @@
             <input type="text" placeholder="Título" id="title-input">
             <input type="text" placeholder="Description" id="bio-input">
         <button id="create">Create Post</button>
+        <p class="backHome3">Volver a pantalla principal</p>
     </div>
     <script src="/app1/index.js"></script>
 </body>
