@@ -1,5 +1,7 @@
-document.getElementById("get-btn").addEventListener("click", getUsers);
-document.getElementById("get-btn").addEventListener("click", getUsers);
+document.getElementById("usersList-btn").addEventListener("click",);
+document.getElementById("postList-btn").addEventListener("click",);
+const userList_div = document.getElementById("usersList");
+const postList_div = document.getElementById("postList");
 
 function getUsers() {
   fetch("http://localhost:5050/users")

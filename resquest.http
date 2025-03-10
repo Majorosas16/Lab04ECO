@@ -1,2 +1,14 @@
-GET http://localhost:5050/users
+GET http://localhost:5020/users
 
+###
+
+POST url http://localhost:5020/user-register
+Content-Type: "application/json"
+
+{
+    "user": "John Doe",
+    "name": "frerfe",
+    "password": "123456"
+}
+
+ 
