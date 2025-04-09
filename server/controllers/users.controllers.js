@@ -22,15 +22,22 @@ const createUser = async (req, res) => {
 const loginUser = async (req, res) => {
   const { user, password } = req.body;
 
+  console.log("llegó: " + user, password);
+
   if (!user || !password) {
     return res
       .status(400)
       .json({ message: "Ops, faltan datos", success: false });
   }
 
+  const aver = getUsersFromDb();
+  console.log(aver);
+
   const foundUser = getUsersFromDb().find(
     (u) => u.user === user && u.password === password
   );
+
+  console.log(foundUser);
 
   if (!foundUser) {
     return res.status(401).json({

@@ -4,8 +4,10 @@ document.getElementById("create").addEventListener("click", createPost);
 
 const avatarInput = document.getElementById("avatar-image");
 const userInput = document.getElementById("user-input");
+const userLoginInput = document.getElementById("userLogin-input");
 const nameInput = document.getElementById("name-input");
 const passwordInput = document.getElementById("password-input");
+const passwordLoginInput = document.getElementById("passwordLogin-input");
 const urlImage = document.getElementById("url-image");
 const titleImage = document.getElementById("title-input");
 const bio = document.getElementById("bio-input");
@@ -60,12 +62,13 @@ function userRegister() {
 }
 
 function userLogin() {
+  
   fetch("http://localhost:5020/user-login", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
-      user: userInput.value,
-      password: passwordInput.value,
+      user: userLoginInput.value,
+      password: passwordLoginInput.value,
     }),
   })
     .then((response) => response.json())
