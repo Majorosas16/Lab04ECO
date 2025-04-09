@@ -1,6 +1,7 @@
-let users = [];
+const { getUsersFromDb, createUserFromDb } = require("../db/users.db");
 
 const getUsers = async (req, res) => {
+  const users = getUsersFromDb();
   res.json(users);
 };
 
@@ -14,7 +15,7 @@ const createUser = async (req, res) => {
   const newUser = { avatar, user, name, password };
   console.log("Super el registro:", newUser);
 
-  users.push(newUser);
+  createUserFromDb(newUser);
   res.json({ message: "Usuario registrado" });
 };
 
@@ -27,7 +28,7 @@ const loginUser = async (req, res) => {
       .json({ message: "Ops, faltan datos", success: false });
   }
 
-  const foundUser = users.find(
+  const foundUser = getUsersFromDb().find(
     (u) => u.user === user && u.password === password
   );
 
